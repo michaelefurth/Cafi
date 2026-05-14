@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { StatePage, type StateContent } from "@/components/StatePage";
+import { heroImages } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "CAFI Texas | Working Capital for Texas Contractors",
@@ -14,8 +15,7 @@ const content: StateContent = {
   heroTitle: <>30+ years funding the contractors who build Texas.</>,
   heroIntro:
     "From Fort Bliss to Biggs Army Airfield to commercial work across El Paso, CAFI has carried working capital under Texas contractors since 1992. SAM registered with the federal government for 30+ years.",
-  heroImage:
-    "https://images.unsplash.com/photo-1581094271901-8022df4466f9?auto=format&fit=crop&w=2200&q=80",
+  heroImage: heroImages.texas,
   heroImageAlt: "Concrete pour on a Texas commercial job site",
   pillars: [
     { value: "30+", label: "Years headquartered in El Paso" },

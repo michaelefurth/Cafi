@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { StatePage, type StateContent } from "@/components/StatePage";
+import { heroImages } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "CAFI New Mexico | Holloman, White Sands, and NM Contractors",
@@ -14,8 +15,7 @@ const content: StateContent = {
   heroTitle: <>Long-running work on New Mexico federal installations.</>,
   heroIntro:
     "CAFI has funded subcontractors on Holloman Air Force Base, White Sands Missile Range, and commercial construction work across New Mexico for decades. Part of the same 30+ year track record on Southwest federal projects.",
-  heroImage:
-    "https://images.unsplash.com/photo-1542621334-a254cf47733d?auto=format&fit=crop&w=2200&q=80",
+  heroImage: heroImages.newMexico,
   heroImageAlt: "Southwest desert construction site near White Sands",
   pillars: [
     { value: "30+", label: "Years on Southwest federal work" },

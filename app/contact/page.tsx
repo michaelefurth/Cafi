@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/components/ContactForm";
+import { heroImages } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Contact CAFI | El Paso, Texas",
@@ -15,7 +16,7 @@ export default function ContactPage() {
         eyebrow="Contact"
         title={<>Talk to CAFI about your next contract.</>}
         intro="Pick up the phone, send a note, or stop by the El Paso office. We are direct, and we answer."
-        image="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=2200&q=80"
+        image={heroImages.contact}
         imageAlt="Phone on a contractor's desk with paperwork"
       />
 

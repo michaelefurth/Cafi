@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
+import { caseStudyImages, heroImages } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Case Studies | CAFI",
@@ -24,7 +25,7 @@ const cases = [
       { v: "2", l: "Prime contractor relationships" }
     ],
     image:
-      "https://images.unsplash.com/photo-1503387837-b154d5074bd2?auto=format&fit=crop&w=1800&q=80"
+      caseStudyImages.baseRealignmentFull
   },
   {
     eyebrow: "Federal services",
@@ -39,7 +40,7 @@ const cases = [
       { v: "Recurring", l: "Advance schedule" }
     ],
     image:
-      "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=1800&q=80"
+      caseStudyImages.federalServices
   },
   {
     eyebrow: "Phoenix commercial",
@@ -54,7 +55,7 @@ const cases = [
       { v: "0", l: "Missed payrolls" }
     ],
     image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=80"
+      caseStudyImages.phoenixMep
   }
 ];
 
@@ -65,7 +66,7 @@ export default function CaseStudiesPage() {
         eyebrow="Case studies"
         title={<>Long-running work, written down.</>}
         intro="The projects below are representative of the work CAFI has funded across Texas, Arizona, and New Mexico. Names of subs are withheld for privacy. Primes are referenced where public record permits."
-        image="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=2200&q=80"
+        image={heroImages.caseStudies}
         imageAlt="Construction worker reviewing plans on site"
       />
 

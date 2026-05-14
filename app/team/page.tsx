@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
+import { heroImages } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Team | CAFI",
@@ -47,7 +48,7 @@ export default function TeamPage() {
         eyebrow="Team"
         title={<>The people who answer the phone in El Paso.</>}
         intro="CAFI does not run a call center. The same team underwrites, funds, and follows up. Dennis Williams handles sales and client outreach and is usually the first voice contractors hear."
-        image="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2200&q=80"
+        image={heroImages.team}
         imageAlt="Team meeting in an office setting"
       />
 

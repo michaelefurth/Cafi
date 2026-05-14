@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
+import { heroImages } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "About | CAFI",
@@ -15,7 +16,7 @@ export default function AboutPage() {
         eyebrow="About CAFI"
         title={<>30+ years of working capital under Southwest contractors.</>}
         intro="CAFI was founded in El Paso to fund the contractors banks turned away. Three decades later, that is still the job."
-        image="https://images.unsplash.com/photo-1495849358234-9b5d54627e89?auto=format&fit=crop&w=2200&q=80"
+        image={heroImages.about}
         imageAlt="El Paso skyline at dusk"
       />
 

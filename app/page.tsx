@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { TrustBand } from "@/components/TrustBand";
 import { SectionHeading } from "@/components/SectionHeading";
 import { StateCard } from "@/components/StateCard";
+import { caseStudyImages, stateCardImages } from "@/lib/images";
 
 const audiences = [
   "Minority-owned businesses",
@@ -136,7 +137,7 @@ export default function HomePage() {
               name="Texas"
               years="Headquartered · 30+ years"
               href="/texas"
-              image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80"
+              image={stateCardImages.texas}
               bullets={[
                 "Fort Bliss, Biggs Army Airfield, McGregor Range",
                 "BBB Paso del Norte, Greater El Paso Chamber, NAWIC",
@@ -148,7 +149,7 @@ export default function HomePage() {
               name="Arizona"
               years="22+ years in Phoenix"
               href="/arizona"
-              image="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1600&q=80"
+              image={stateCardImages.arizona}
               bullets={[
                 "Phoenix and statewide commercial contractors",
                 "ASA Arizona, AMCA, Greater Phoenix Chamber",
@@ -160,7 +161,7 @@ export default function HomePage() {
               name="New Mexico"
               years="Southwest federal track record"
               href="/new-mexico"
-              image="https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?auto=format&fit=crop&w=1600&q=80"
+              image={stateCardImages.newMexico}
               bullets={[
                 "Holloman Air Force Base, White Sands Missile Range",
                 "Base realignment housing under Centex and Balfour Beatty",
@@ -199,7 +200,7 @@ export default function HomePage() {
           <div className="lg:col-span-7">
             <div className="relative aspect-[5/6] w-full overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1503387837-b154d5074bd2?auto=format&fit=crop&w=1600&q=80"
+                src={caseStudyImages.baseRealignmentAnchor}
                 alt="Framing crew on a Southwest residential build"
                 className="absolute inset-0 h-full w-full object-cover"
               />

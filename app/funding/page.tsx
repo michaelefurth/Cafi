@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
+import { heroImages } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Funding | How CAFI Advances Working Capital",
@@ -65,7 +66,7 @@ export default function FundingPage() {
         eyebrow="Funding"
         title={<>Working capital, advanced against the work you already won.</>}
         intro="CAFI is not a bank. CAFI advances funds against your approved receivables, so you can mobilize the next phase before the prime pays the last one."
-        image="https://images.unsplash.com/photo-1466354424719-343280fe118b?auto=format&fit=crop&w=2200&q=80"
+        image={heroImages.funding}
         imageAlt="Approved pay application paperwork on a construction job site desk"
       />
 

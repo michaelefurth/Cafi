@@ -1,11 +1,12 @@
 import Link from "next/link";
+import { heroImages } from "@/lib/images";
 
 export function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-forest-deep text-cream">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2400&q=80"
+          src={heroImages.home}
           alt="Commercial construction job site at golden hour in the Southwest"
           className="h-full w-full object-cover opacity-55"
         />
