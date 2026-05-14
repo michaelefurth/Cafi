@@ -39,20 +39,27 @@ export function Footer() {
             construction and service contractors performing on government, state, and local
             contracts across Texas, Arizona, and New Mexico. 30+ years on Southwest job sites.
           </p>
-          <div className="mt-8 space-y-2 font-sans text-sm text-cream/85">
-            <p>6044 Gateway Blvd E, Suite 544</p>
-            <p>El Paso, TX 79905</p>
-            <p>
-              <a href="tel:+19157726333" className="hover:text-gold-warm">
-                915.772.6333
-              </a>
-              <span className="mx-2 text-cream/40">·</span>
-              <a href="tel:+18886862234" className="hover:text-gold-warm">
-                888.686.2234
-              </a>
-            </p>
-            <p className="pt-2 text-gold-warm">Se Habla Español</p>
+          <div className="mt-8 grid gap-6 text-sm text-cream/85 sm:grid-cols-2">
+            <div>
+              <p className="text-[10px] uppercase tracking-widest text-gold-warm">El Paso · Headquarters</p>
+              <p className="mt-2">6044 Gateway Blvd E, Suite 544</p>
+              <p>El Paso, TX 79905</p>
+              <p className="mt-1">
+                <a href="tel:+19157726333" className="hover:text-gold-warm">915.772.6333</a>
+                <span className="mx-2 text-cream/40">·</span>
+                <a href="tel:+18886862234" className="hover:text-gold-warm">888.686.2234</a>
+              </p>
+            </div>
+            <div>
+              <p className="text-[10px] uppercase tracking-widest text-gold-warm">Scottsdale · CAFI Arizona</p>
+              <p className="mt-2">8260 E Raintree Drive</p>
+              <p>Scottsdale, AZ 85260</p>
+              <p className="mt-1">
+                <a href="tel:+14803158188" className="hover:text-gold-warm">480.315.8188</a>
+              </p>
+            </div>
           </div>
+          <p className="mt-6 text-sm text-gold-warm">Se Habla Español</p>
         </div>
 
         {columns.map((col) => (

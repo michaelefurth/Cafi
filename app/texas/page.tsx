@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { StatePage, type StateContent } from "@/components/StatePage";
 import { heroImages } from "@/lib/images";
+import { leadContactFor, offices } from "@/lib/contacts";
 
 export const metadata: Metadata = {
   title: "CAFI Texas | Working Capital for Texas Contractors",
@@ -108,7 +109,9 @@ const content: StateContent = {
     }
   ],
   applicationHref: "/applications/cafi-tx-contractor-application.pdf",
-  applicationLabel: "Download Texas contractor application (PDF)"
+  applicationLabel: "Download Texas contractor application (PDF)",
+  leadContact: leadContactFor("TX"),
+  office: offices.elPaso
 };
 
 export default function Page() {

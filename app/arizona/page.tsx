@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { StatePage, type StateContent } from "@/components/StatePage";
 import { heroImages } from "@/lib/images";
+import { leadContactFor, offices } from "@/lib/contacts";
 
 export const metadata: Metadata = {
   title: "CAFI Arizona | Working Capital for Phoenix Contractors",
@@ -108,7 +109,9 @@ const content: StateContent = {
     }
   ],
   applicationHref: "/applications/cafi-az-contractor-application.pdf",
-  applicationLabel: "Download Arizona contractor application (PDF)"
+  applicationLabel: "Download Arizona contractor application (PDF)",
+  leadContact: leadContactFor("AZ"),
+  office: offices.scottsdale
 };
 
 export default function Page() {

@@ -147,13 +147,13 @@ export default function HomePage() {
             <StateCard
               abbr="AZ"
               name="Arizona"
-              years="22+ years in Phoenix"
+              years="22+ years in Phoenix · Ask for Dennis"
               href="/arizona"
               image={stateCardImages.arizona}
               bullets={[
-                "Phoenix and statewide commercial contractors",
-                "ASA Arizona, AMCA, Greater Phoenix Chamber",
-                "Banking partner of the ASBA SCALE program"
+                "Dennis Williams leads CAFI Arizona client outreach",
+                "Scottsdale office, Phoenix and statewide contractors",
+                "ASA Arizona, AMCA, ASBA SCALE banking partner"
               ]}
             />
             <StateCard
