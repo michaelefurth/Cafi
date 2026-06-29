@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
+import { JsonLd } from "@/components/JsonLd";
 import { caseStudyImages, heroImages } from "@/lib/images";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Case Studies | CAFI",
@@ -62,6 +64,13 @@ const cases = [
 export default function CaseStudiesPage() {
   return (
     <>
+      <JsonLd
+        id="ld-case-studies"
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Case studies", path: "/case-studies" }
+        ])}
+      />
       <PageHero
         eyebrow="Case studies"
         title={<>Long-running work, written down.</>}

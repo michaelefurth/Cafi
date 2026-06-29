@@ -2,20 +2,56 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { JsonLd } from "@/components/JsonLd";
+import { localBusinessSchemas, organizationSchema, websiteSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: {
-    default: "CAFI | Working Capital for Southwest Contractors",
+    default: "CAFI | Cash Management and Funds Control for Contractors",
     template: "%s | CAFI"
   },
   description:
-    "CAFI provides working capital and short-term accounts receivable financing to commercial construction and service contractors performing on government, state, and local contracts across Texas, Arizona, and New Mexico. 30+ years on Southwest job sites.",
+    "CAFI is a cash-management and funds-control program for commercial construction and service contractors. Approved invoices become working capital in 24 to 48 hours. Not a loan, no debt on the books. 30+ years across Texas, Arizona, and New Mexico.",
   metadataBase: new URL("https://cafi-usa.com"),
+  alternates: { canonical: "/" },
+  keywords: [
+    "construction working capital",
+    "contractor cash management",
+    "funds control for contractors",
+    "accounts receivable financing construction",
+    "subcontractor cash flow",
+    "pay application financing",
+    "Texas contractor financing",
+    "Arizona contractor financing",
+    "New Mexico contractor financing",
+    "federal contractor financing",
+    "SAM registered lender"
+  ],
   openGraph: {
-    title: "CAFI | Working Capital for Southwest Contractors",
+    title: "CAFI | Cash Management and Funds Control for Contractors",
     description:
-      "30+ years funding commercial construction and service contractors across Texas, Arizona, and New Mexico. When banks say no, CAFI says yes.",
-    type: "website"
+      "30+ years putting Southwest contractors in control of their cash cycle. Approved invoices become working capital in 24 to 48 hours. Not a loan.",
+    url: "https://cafi-usa.com",
+    siteName: "CAFI",
+    type: "website",
+    locale: "en_US"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CAFI | Cash Management and Funds Control for Contractors",
+    description:
+      "Approved invoices become working capital in 24 to 48 hours. Not a loan. 30+ years across TX, AZ, NM."
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1
+    }
   }
 };
 
@@ -31,6 +67,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="bg-cream text-ink">
+        <JsonLd
+          id="ld-organization"
+          data={[organizationSchema(), ...localBusinessSchemas(), websiteSchema()]}
+        />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-forest-deep focus:px-4 focus:py-2 focus:text-cream"

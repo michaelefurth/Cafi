@@ -23,6 +23,7 @@ const columns = [
       { href: "/about", label: "About" },
       { href: "/team", label: "Team" },
       { href: "/case-studies", label: "Case studies" },
+      { href: "/faq", label: "FAQ" },
       { href: "/contact", label: "Contact" }
     ]
   }
@@ -35,9 +36,9 @@ export function Footer() {
         <div className="lg:col-span-5">
           <div className="font-serif text-3xl font-bold tracking-tight text-cream">CAFI</div>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-cream/70">
-            Working capital and short-term accounts receivable financing for commercial
-            construction and service contractors performing on government, state, and local
-            contracts across Texas, Arizona, and New Mexico. 30+ years on Southwest job sites.
+            Cash management and funds control for commercial construction and service contractors.
+            Approved invoices become working capital in 24 to 48 hours. Not a loan, no debt on the
+            books. 30+ years across Texas, Arizona, and New Mexico.
           </p>
           <div className="mt-8 grid gap-6 text-sm text-cream/85 sm:grid-cols-2">
             <div>

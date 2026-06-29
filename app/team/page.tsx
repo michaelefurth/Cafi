@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
+import { JsonLd } from "@/components/JsonLd";
 import { heroImages } from "@/lib/images";
 import { additionalTeam, offices, principals, type Person } from "@/lib/contacts";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Team | CAFI",
@@ -13,6 +15,13 @@ export const metadata: Metadata = {
 export default function TeamPage() {
   return (
     <>
+      <JsonLd
+        id="ld-team"
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Team", path: "/team" }
+        ])}
+      />
       <PageHero
         eyebrow="Team"
         title={<>The principals behind CAFI.</>}

@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/components/ContactForm";
+import { JsonLd } from "@/components/JsonLd";
 import { heroImages } from "@/lib/images";
 import { offices, principals } from "@/lib/contacts";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Contact CAFI | El Paso, Texas and Scottsdale, Arizona",
@@ -18,6 +20,13 @@ const frank = principals.find((p) => p.id === "frank-bashore")!;
 export default function ContactPage() {
   return (
     <>
+      <JsonLd
+        id="ld-contact"
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" }
+        ])}
+      />
       <PageHero
         eyebrow="Contact"
         title={<>Talk to CAFI about your next contract.</>}

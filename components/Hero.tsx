@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { heroImages } from "@/lib/images";
+import { positioning } from "@/lib/cafi";
 
 export function Hero() {
   return (
@@ -13,19 +14,23 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-forest-deep/70 via-forest-deep/55 to-forest-deep/95" />
       </div>
 
-      <div className="container-edge relative grid min-h-[78vh] grid-cols-1 items-end gap-12 py-24 md:py-32 lg:grid-cols-12">
+      <div className="container-edge relative grid min-h-[80vh] grid-cols-1 items-end gap-12 py-24 md:py-32 lg:grid-cols-12">
         <div className="lg:col-span-9">
           <div className="flex items-center gap-4 text-gold-warm">
             <span className="block h-px w-12 bg-gold" />
-            <span className="font-sans text-xs uppercase tracking-widest">Since 1992 · El Paso, Texas</span>
+            <span className="font-sans text-xs uppercase tracking-widest">
+              {positioning.badge}
+            </span>
           </div>
 
           <h1 className="mt-8 font-serif text-[2.4rem] font-bold leading-[1.03] tracking-tight text-cream md:text-6xl lg:text-7xl">
-            The industry leader in lending to service and construction companies for over 30 years.
+            Control is the product.{" "}
+            <span className="text-gold-warm">Funding is the feature.</span>
           </h1>
 
           <p className="mt-8 max-w-2xl font-serif text-xl leading-relaxed text-cream/85 md:text-2xl">
-            When banks say no, CAFI says yes.
+            CAFI puts contractors in control of their cash cycle. Approved invoices become
+            working capital in 24 to 48 hours. Not a loan. No debt on the books.
           </p>
 
           <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -44,9 +49,9 @@ export function Hero() {
         <div className="lg:col-span-3 lg:justify-self-end">
           <div className="grid grid-cols-3 gap-px bg-cream/15 text-cream lg:grid-cols-1">
             {[
-              ["30+", "Years funding the Southwest"],
-              ["24-48", "Hours to funding after approval"],
-              ["3", "States. TX, AZ, NM."]
+              ["30+", "Years exclusively in construction"],
+              ["$1B+", "Funded across all programs"],
+              ["99%+", "Collected"]
             ].map(([n, t]) => (
               <div key={t} className="bg-forest-deep/80 p-6">
                 <div className="font-serif text-3xl font-bold text-gold-warm md:text-4xl">{n}</div>

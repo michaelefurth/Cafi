@@ -9,6 +9,7 @@ const primary = [
   { href: "/arizona", label: "Arizona" },
   { href: "/new-mexico", label: "New Mexico" },
   { href: "/case-studies", label: "Case Studies" },
+  { href: "/faq", label: "FAQ" },
   { href: "/about", label: "About" },
   { href: "/team", label: "Team" },
   { href: "/contact", label: "Contact" }

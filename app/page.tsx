@@ -1,9 +1,22 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import { TrustBand } from "@/components/TrustBand";
 import { SectionHeading } from "@/components/SectionHeading";
 import { StateCard } from "@/components/StateCard";
+import { AnswerBlock } from "@/components/AnswerBlock";
+import { AudienceGrid } from "@/components/AudienceGrid";
+import { JsonLd } from "@/components/JsonLd";
 import { caseStudyImages, stateCardImages } from "@/lib/images";
+import { credentials, positioning, projectsList, whatYouGet } from "@/lib/cafi";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
+
+export const metadata: Metadata = {
+  title: "CAFI | Cash Management and Funds Control for Contractors",
+  description:
+    "CAFI puts commercial construction and service contractors in control of their cash cycle. Approved invoices become working capital in 24 to 48 hours. Not a loan. 30+ years across Texas, Arizona, and New Mexico.",
+  alternates: { canonical: "/" }
+};
 
 const audiences = [
   "Minority-owned businesses",
@@ -18,67 +31,117 @@ const audiences = [
 export default function HomePage() {
   return (
     <>
+      <JsonLd
+        data={[serviceSchema(), breadcrumbSchema([{ name: "Home", path: "/" }])]}
+        id="ld-home"
+      />
+
       <Hero />
       <TrustBand />
+
+      {/* AEO answer block: short, direct, scrapable. */}
+      <section className="bg-cream">
+        <div className="container-edge grid gap-8 py-16 md:py-20 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <AnswerBlock question="What is CAFI?">
+              <p>
+                CAFI is a cash-management and funds-control program built for commercial
+                construction and service contractors. Approved invoices become working capital in
+                24 to 48 hours, with no debt on the books. CAFI is not a bank, not a factoring
+                company, and not a quick-cash lender. The frame is control over timing, not
+                borrowing.
+              </p>
+            </AnswerBlock>
+          </div>
+          <div className="lg:col-span-5">
+            <AnswerBlock question="How does CAFI work?">
+              <ol className="list-decimal space-y-2 pl-5">
+                <li>Send the 2-page application. No financial statements, no tax returns.</li>
+                <li>CAFI verifies the prime, the contract, and the approved billing.</li>
+                <li>Approval in 1 to 2 business days.</li>
+                <li>Funds deposited inside 24 to 48 hours.</li>
+              </ol>
+            </AnswerBlock>
+          </div>
+        </div>
+      </section>
 
       {/* The Problem */}
       <section className="bg-cream">
         <div className="container-edge grid gap-12 py-24 md:py-32 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionHeading
-              eyebrow="The problem"
-              title={<>You won the bid. The bank still won&rsquo;t fund the job.</>}
+              eyebrow="The gap"
+              title={<>Winning the bid is the easy part.</>}
             />
           </div>
           <div className="prose-editorial lg:col-span-7 lg:pl-8">
             <p>
-              Contractors lose contracts they could have won. They stall on contracts they did
-              win. Not because the work is wrong, but because banks will not extend the working
-              capital it takes to mobilize, make payroll, buy materials, and carry receivables
-              until the prime cuts a check.
+              What comes right after is where contractors lose control. Mobilization, payroll,
+              materials, and subs are all due before the first draw comes in. Pay applications
+              run 30, 45, sometimes 60 days behind. Retainage sits on the table for months.
+              Meanwhile the next mobilization is already due. Subs and suppliers do not wait.
             </p>
             <p>
-              Pay applications run 30, 45, sometimes 60 days behind. Retainage sits on the table
-              for months. Meanwhile the next mobilization is already due. Subs and suppliers do
-              not wait.
-            </p>
-            <p>
-              CAFI was built for the contractor a bank turns down. We have been on this side of
-              the desk for 30 years, and we understand what a pay app, a lien waiver, and a
-              schedule of values actually look like.
+              CAFI is built for that gap. When invoices are approved, you control when that cash
+              releases. Not your GC, not the owner, not a slow accounting department. CAFI has
+              been on this side of the desk for 30 years and understands what a pay application,
+              a lien waiver, and a schedule of values actually look like.
             </p>
           </div>
         </div>
       </section>
 
-      {/* What CAFI does */}
+      {/* Credentials strip */}
       <section className="bg-forest-deep text-cream">
+        <div className="container-edge py-20">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <span className="eyebrow text-gold-warm">The track record</span>
+              <h2 className="mt-4 font-serif text-3xl font-bold text-cream md:text-5xl">
+                30 years. One business. Construction.
+              </h2>
+            </div>
+            <p className="max-w-md text-sm leading-relaxed text-cream/75">
+              Projects funded include {projectsList.slice(0, -1).join(", ")}, and{" "}
+              {projectsList[projectsList.length - 1]}.
+            </p>
+          </div>
+
+          <dl className="mt-12 grid grid-cols-2 gap-px bg-cream/15 md:grid-cols-6">
+            {credentials.map((c) => (
+              <div key={c.label} className="bg-forest-deep p-6">
+                <dt className="font-serif text-3xl font-bold text-gold-warm md:text-4xl">
+                  {c.value}
+                </dt>
+                <dd className="mt-2 text-[10px] uppercase tracking-widest text-cream/65">
+                  {c.label}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      {/* What CAFI does */}
+      <section className="bg-cream">
         <div className="container-edge grid gap-12 py-24 md:py-32 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionHeading
-              tone="dark"
               eyebrow="What CAFI does"
-              title={<>Working capital, advanced against your approved receivables.</>}
+              title={<>Control over when your approved invoices fund.</>}
             />
           </div>
           <div className="lg:col-span-7 lg:pl-8">
-            <p className="max-w-prose text-lg leading-relaxed text-cream/85">
-              CAFI provides working capital and short-term accounts receivable financing to
-              commercial construction and service contractors performing on government, state, and
-              local contracts. We advance funds against approved invoices and pay applications,
-              so you can mobilize the next phase before the prime pays the last one.
+            <p className="max-w-prose font-serif text-xl leading-relaxed text-ink/85">
+              {positioning.notWeAre}
             </p>
 
-            <dl className="mt-12 grid gap-px bg-cream/10 sm:grid-cols-2">
-              {[
-                ["No financial statements required.", "We do not ask for three years of audited financials. We look at the receivable and the prime."],
-                ["No tax returns required.", "Your tax return is your business. The contract is ours."],
-                ["Two-page application.", "Plain English, the kind a project manager can complete from the truck."],
-                ["Approval in one to two business days.", "Funding inside 24 to 48 hours of approval. No theater."]
-              ].map(([term, detail]) => (
-                <div key={term} className="bg-forest-deep p-7">
-                  <dt className="font-serif text-xl text-gold-warm">{term}</dt>
-                  <dd className="mt-3 text-sm leading-relaxed text-cream/75">{detail}</dd>
+            <dl className="mt-10 grid gap-px bg-forest/15 sm:grid-cols-2">
+              {whatYouGet.slice(0, 6).map((item) => (
+                <div key={item} className="flex items-start gap-3 bg-cream-warm p-5">
+                  <span className="mt-2 inline-block h-1.5 w-1.5 flex-shrink-0 bg-gold" />
+                  <dt className="text-[1rem] leading-relaxed text-forest-deep">{item}</dt>
                 </div>
               ))}
             </dl>
@@ -92,14 +155,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Who CAFI serves */}
+      {/* Four contractor types */}
       <section className="bg-cream-warm">
+        <div className="container-edge py-24 md:py-32">
+          <SectionHeading
+            eyebrow="Built for four kinds of contractor"
+            title={<>The pain CAFI was made to solve.</>}
+            intro="Whether you bill the work, oversee the subs who do, supply the materials, or perform on a federal task order, CAFI lines up against the cash-timing pain your business actually carries."
+          />
+          <div className="mt-14">
+            <AudienceGrid />
+          </div>
+        </div>
+      </section>
+
+      {/* Who CAFI serves */}
+      <section className="bg-cream">
         <div className="container-edge grid gap-12 py-24 md:py-32 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionHeading
               eyebrow="Who CAFI serves"
               title={<>The contractors building the Southwest.</>}
-              intro="CAFI funds the contractors banks were never built for, and the contractors who carry the federal, state, and local work that gets the Southwest built."
+              intro="CAFI is especially strong for the contractors banks were never built for, and for the contractors carrying federal, state, and local work."
             />
           </div>
           <div className="lg:col-span-7 lg:pl-8">
@@ -107,7 +184,9 @@ export default function HomePage() {
               {audiences.map((a, i) => (
                 <li key={a} className="flex items-baseline justify-between gap-6 py-5">
                   <div className="flex items-baseline gap-5">
-                    <span className="font-serif text-sm text-gold">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="font-serif text-sm text-gold">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <span className="font-serif text-xl text-forest-deep md:text-2xl">{a}</span>
                   </div>
                 </li>
@@ -118,13 +197,13 @@ export default function HomePage() {
       </section>
 
       {/* State sections */}
-      <section className="bg-cream">
+      <section className="bg-cream-warm">
         <div className="container-edge py-24 md:py-32">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <SectionHeading
               eyebrow="Regions"
-              title={<>Three states. One desk in El Paso.</>}
-              intro="CAFI runs out of El Paso and funds contractors across the Southwest. The work, the bases, and the people are different in each state. The discipline is the same."
+              title={<>Three states. Two desks. One team.</>}
+              intro="CAFI runs out of El Paso and Scottsdale, funding contractors across the Southwest. The work, the bases, and the people are different in each state. The discipline is the same."
             />
             <Link href="/contact" className="btn-ghost arrow">
               Talk to CAFI
@@ -139,7 +218,7 @@ export default function HomePage() {
               href="/texas"
               image={stateCardImages.texas}
               bullets={[
-                "Fort Bliss, Biggs Army Airfield, McGregor Range",
+                "Fort Bliss ($40M+), Biggs Army Airfield, McGregor Range",
                 "BBB Paso del Norte, Greater El Paso Chamber, NAWIC",
                 "SAM/CCR registered with the federal government 30+ years"
               ]}
@@ -176,9 +255,9 @@ export default function HomePage() {
       <section className="bg-forest-deep text-cream">
         <div className="container-edge grid gap-12 py-24 md:py-32 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <span className="eyebrow">Case study · Base realignment</span>
+            <span className="eyebrow text-gold-warm">Case study · Base realignment</span>
             <h2 className="mt-6 font-serif text-4xl font-bold leading-[1.05] text-cream md:text-5xl">
-              Six years. Four bases. 3,600 homes funded from the sub side.
+              Six years. Four bases. 3,600+ homes funded from the sub side.
             </h2>
             <p className="mt-7 text-lg leading-relaxed text-cream/80">
               CAFI financed housing subcontractors who participated in the construction of more
@@ -192,7 +271,7 @@ export default function HomePage() {
               base goes vertical.
             </p>
             <div className="mt-10">
-              <Link href="/case-studies" className="btn-ghost arrow">
+              <Link href="/case-studies" className="btn-ghost arrow text-gold-warm">
                 Read the full case study
               </Link>
             </div>
@@ -208,15 +287,21 @@ export default function HomePage() {
                 <div className="grid grid-cols-3 gap-6 text-cream">
                   <div>
                     <div className="font-serif text-3xl font-bold text-gold-warm">3,600+</div>
-                    <div className="mt-1 text-[11px] uppercase tracking-widest text-cream/75">Homes funded</div>
+                    <div className="mt-1 text-[11px] uppercase tracking-widest text-cream/75">
+                      Homes funded
+                    </div>
                   </div>
                   <div>
                     <div className="font-serif text-3xl font-bold text-gold-warm">6 yrs</div>
-                    <div className="mt-1 text-[11px] uppercase tracking-widest text-cream/75">Continuous mobilization</div>
+                    <div className="mt-1 text-[11px] uppercase tracking-widest text-cream/75">
+                      Continuous mobilization
+                    </div>
                   </div>
                   <div>
                     <div className="font-serif text-3xl font-bold text-gold-warm">4</div>
-                    <div className="mt-1 text-[11px] uppercase tracking-widest text-cream/75">Southwest bases</div>
+                    <div className="mt-1 text-[11px] uppercase tracking-widest text-cream/75">
+                      Southwest bases
+                    </div>
                   </div>
                 </div>
               </div>
@@ -238,10 +323,16 @@ export default function HomePage() {
           </div>
           <div className="md:col-span-5 md:justify-self-end">
             <div className="flex flex-col items-start gap-4 md:items-end">
-              <a href="tel:+19157726333" className="font-serif text-3xl font-bold text-forest-deep md:text-4xl">
+              <a
+                href="tel:+19157726333"
+                className="font-serif text-3xl font-bold text-forest-deep md:text-4xl"
+              >
                 915.772.6333
               </a>
-              <a href="tel:+18886862234" className="font-serif text-2xl font-semibold text-forest-deep/80">
+              <a
+                href="tel:+18886862234"
+                className="font-serif text-2xl font-semibold text-forest-deep/80"
+              >
                 888.686.2234
               </a>
               <Link

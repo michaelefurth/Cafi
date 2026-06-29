@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { StatePage, type StateContent } from "@/components/StatePage";
+import { JsonLd } from "@/components/JsonLd";
 import { heroImages } from "@/lib/images";
 import { leadContactFor, offices } from "@/lib/contacts";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "CAFI Texas | Working Capital for Texas Contractors",
@@ -115,5 +117,19 @@ const content: StateContent = {
 };
 
 export default function Page() {
-  return <StatePage content={content} />;
+  return (
+    <>
+      <JsonLd
+        id="ld-texas"
+        data={[
+          serviceSchema(),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Texas", path: "/texas" }
+          ])
+        ]}
+      />
+      <StatePage content={content} />
+    </>
+  );
 }
