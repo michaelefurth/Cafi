@@ -79,6 +79,32 @@ export default function CaseStudiesPage() {
         imageAlt="Construction worker reviewing plans on site"
       />
 
+      {/* Notable projects funded */}
+      <section className="border-b border-forest/10 bg-forest-deep text-cream">
+        <div className="container-edge py-16">
+          <span className="eyebrow text-gold-warm">Notable projects funded</span>
+          <p className="mt-4 max-w-3xl font-serif text-xl leading-snug text-cream/90 md:text-2xl">
+            Over 30 years and $1B+ funded, CAFI has carried working capital under subcontractors on
+            some of the most demanding jobs in the Southwest and beyond.
+          </p>
+          <ul className="mt-10 grid gap-px bg-cream/15 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { name: "Fort Bliss", detail: "$40M+ funded" },
+              { name: "Cowboys Stadium", detail: "Stadium construction" },
+              { name: "Marlins Stadium", detail: "Stadium construction" },
+              { name: "VA hospitals", detail: "Federal healthcare" }
+            ].map((p) => (
+              <li key={p.name} className="bg-forest-deep p-6">
+                <div className="font-serif text-2xl font-semibold text-cream">{p.name}</div>
+                <div className="mt-2 text-xs uppercase tracking-widest text-gold-warm">
+                  {p.detail}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {cases.map((c, i) => (
         <section key={c.title} className={i % 2 === 0 ? "bg-cream" : "bg-cream-warm"}>
           <div className="container-edge grid gap-12 py-24 lg:grid-cols-12">

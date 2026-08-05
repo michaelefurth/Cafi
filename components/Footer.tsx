@@ -6,7 +6,8 @@ const columns = [
     links: [
       { href: "/funding", label: "How it works" },
       { href: "/funding#apply", label: "Apply" },
-      { href: "/funding#qualify", label: "What qualifies" }
+      { href: "/funding#qualify", label: "What qualifies" },
+      { href: "/project-assurance", label: "Project Assurance (GCs)" }
     ]
   },
   {

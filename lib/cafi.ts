@@ -100,6 +100,49 @@ export const whatYouGet = [
   "Cancel anytime with no penalty"
 ] as const;
 
+/**
+ * CAFI Project Assurance. A funds-control product aimed at general contractors,
+ * distinct from the sub-facing working-capital advance. Drawn from the brief's
+ * GC Outreach section.
+ */
+export const projectAssurance = {
+  name: "CAFI Project Assurance",
+  tagline: "Funded, compliant subs. Clean draws. Zero cost to the GC.",
+  summary:
+    "Project Assurance is a funds-control program that keeps your subcontractors funded and compliant on your jobs, at zero cost to you. CAFI manages the disbursement flow, packages the lien-waiver compliance, and funds your subs against approved invoices in 24 to 48 hours. Your terms, your process, your books. Nothing changes on your end.",
+  stat: {
+    value: "82%",
+    label: "of subcontractor failures are cash-related"
+  },
+  problem: [
+    "When a sub runs out of cash between pay apps, they slow down on your job.",
+    "They start taking side work to cover payroll.",
+    "They come to you asking for advances, and you become the banker."
+  ],
+  benefits: [
+    {
+      h: "Subs funded in 24 to 48 hours",
+      p: "Your subs get funded on approved invoices, so cash never stalls a phase of your job."
+    },
+    {
+      h: "Early-payment requests stop",
+      p: "You stop fielding advance requests from cash-strapped subs. CAFI carries that timing gap."
+    },
+    {
+      h: "Lien-waiver compliance packaged",
+      p: "Compliance documentation is delivered to your office and draws stay clean. No draw kicked back over a sub's missing paperwork."
+    },
+    {
+      h: "Zero liability, zero cost",
+      p: "Your payment terms do not change. Your process does not change. No debt, nothing touches your books. Zero cost on your end."
+    },
+    {
+      h: "You become the preferred GC",
+      p: "Word gets around that you run clean, funded jobs. You attract and keep the best subs in the market."
+    }
+  ]
+} as const;
+
 /** Best-fit signals from the qualification framework. */
 export const fitSignals = [
   "Public-work subs and GCs running $50K+ invoices",
@@ -184,8 +227,12 @@ export const faqs: { category: string; items: FAQ[] }[] = [
         a: "Subcontractors, general contractors, suppliers, and federal or government contractors performing on public work with $50K+ invoices and 30 to 90 day pay cycles. Especially strong fit for minority-owned, veteran-owned, women-owned, Native American-owned, and DBE contractors."
       },
       {
+        q: "What is CAFI Project Assurance?",
+        a: "Project Assurance is a funds-control program for general contractors. CAFI keeps your subcontractors funded and compliant on your jobs at zero cost to you. CAFI manages the disbursement flow, packages lien-waiver compliance so draws stay clean, and funds your subs in 24 to 48 hours on approved invoices. Your terms and process do not change, and nothing touches your books."
+      },
+      {
         q: "I am a general contractor. Why would I bring CAFI to my subs?",
-        a: "CAFI Project Assurance keeps your subs funded and compliant on your jobs at zero cost to you. Subs get funded in 24 to 48 hours, early-payment requests stop hitting your inbox, lien-waiver compliance is packaged for your draws, and you become the GC funded subs want to work with."
+        a: "CAFI Project Assurance keeps your subs funded and compliant on your jobs at zero cost to you. Subs get funded in 24 to 48 hours, early-payment requests stop hitting your inbox, lien-waiver compliance is packaged for your draws, and you become the GC funded subs want to work with. 82% of subcontractor failures are cash-related, so a funded sub is a lower schedule risk."
       },
       {
         q: "We already pay our subs on time. Why do we need this?",
