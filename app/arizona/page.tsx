@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { StatePage, type StateContent } from "@/components/StatePage";
+import { JsonLd } from "@/components/JsonLd";
+import { heroImages } from "@/lib/images";
+import { leadContactFor, offices } from "@/lib/contacts";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "CAFI Arizona | Working Capital for Phoenix Contractors",
@@ -14,8 +18,7 @@ const content: StateContent = {
   heroTitle: <>Funding the contractors who build the Valley.</>,
   heroIntro:
     "For 22+ years CAFI has advanced working capital under Arizona commercial contractors performing on government, state, municipal, and private commercial work. A banking partner of the ASBA SCALE program and a member of ASA Arizona and AMCA.",
-  heroImage:
-    "https://images.unsplash.com/photo-1429497419816-9ca5cfb4571a?auto=format&fit=crop&w=2200&q=80",
+  heroImage: heroImages.arizona,
   heroImageAlt: "Phoenix commercial construction at golden hour",
   pillars: [
     { value: "22+", label: "Years funding Arizona contractors" },
@@ -108,9 +111,25 @@ const content: StateContent = {
     }
   ],
   applicationHref: "/applications/cafi-az-contractor-application.pdf",
-  applicationLabel: "Download Arizona contractor application (PDF)"
+  applicationLabel: "Download Arizona contractor application (PDF)",
+  leadContact: leadContactFor("AZ"),
+  office: offices.scottsdale
 };
 
 export default function Page() {
-  return <StatePage content={content} />;
+  return (
+    <>
+      <JsonLd
+        id="ld-arizona"
+        data={[
+          serviceSchema(),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Arizona", path: "/arizona" }
+          ])
+        ]}
+      />
+      <StatePage content={content} />
+    </>
+  );
 }

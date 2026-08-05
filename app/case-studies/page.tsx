@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
+import { JsonLd } from "@/components/JsonLd";
+import { caseStudyImages, heroImages } from "@/lib/images";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Case Studies | CAFI",
@@ -24,7 +27,7 @@ const cases = [
       { v: "2", l: "Prime contractor relationships" }
     ],
     image:
-      "https://images.unsplash.com/photo-1503387837-b154d5074bd2?auto=format&fit=crop&w=1800&q=80"
+      caseStudyImages.baseRealignmentFull
   },
   {
     eyebrow: "Federal services",
@@ -39,7 +42,7 @@ const cases = [
       { v: "Recurring", l: "Advance schedule" }
     ],
     image:
-      "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=1800&q=80"
+      caseStudyImages.federalServices
   },
   {
     eyebrow: "Phoenix commercial",
@@ -54,20 +57,53 @@ const cases = [
       { v: "0", l: "Missed payrolls" }
     ],
     image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=80"
+      caseStudyImages.phoenixMep
   }
 ];
 
 export default function CaseStudiesPage() {
   return (
     <>
+      <JsonLd
+        id="ld-case-studies"
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Case studies", path: "/case-studies" }
+        ])}
+      />
       <PageHero
         eyebrow="Case studies"
         title={<>Long-running work, written down.</>}
         intro="The projects below are representative of the work CAFI has funded across Texas, Arizona, and New Mexico. Names of subs are withheld for privacy. Primes are referenced where public record permits."
-        image="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=2200&q=80"
+        image={heroImages.caseStudies}
         imageAlt="Construction worker reviewing plans on site"
       />
+
+      {/* Notable projects funded */}
+      <section className="border-b border-forest/10 bg-forest-deep text-cream">
+        <div className="container-edge py-16">
+          <span className="eyebrow text-gold-warm">Notable projects funded</span>
+          <p className="mt-4 max-w-3xl font-serif text-xl leading-snug text-cream/90 md:text-2xl">
+            Over 30 years and $1B+ funded, CAFI has carried working capital under subcontractors on
+            some of the most demanding jobs in the Southwest and beyond.
+          </p>
+          <ul className="mt-10 grid gap-px bg-cream/15 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { name: "Fort Bliss", detail: "$40M+ funded" },
+              { name: "Cowboys Stadium", detail: "Stadium construction" },
+              { name: "Marlins Stadium", detail: "Stadium construction" },
+              { name: "VA hospitals", detail: "Federal healthcare" }
+            ].map((p) => (
+              <li key={p.name} className="bg-forest-deep p-6">
+                <div className="font-serif text-2xl font-semibold text-cream">{p.name}</div>
+                <div className="mt-2 text-xs uppercase tracking-widest text-gold-warm">
+                  {p.detail}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       {cases.map((c, i) => (
         <section key={c.title} className={i % 2 === 0 ? "bg-cream" : "bg-cream-warm"}>

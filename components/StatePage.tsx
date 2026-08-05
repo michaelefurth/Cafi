@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 import { PageHero } from "./PageHero";
+import type { Person } from "@/lib/contacts";
+import { offices } from "@/lib/contacts";
 
 export type StateContent = {
   abbr: "TX" | "AZ" | "NM";
@@ -19,6 +21,8 @@ export type StateContent = {
   applicationHref?: string;
   applicationLabel?: string;
   notes?: ReactNode;
+  leadContact?: Person;
+  office?: typeof offices.elPaso | typeof offices.scottsdale;
 };
 
 export function StatePage({ content }: { content: StateContent }) {
@@ -38,7 +42,9 @@ export function StatePage({ content }: { content: StateContent }) {
     lending,
     applicationHref,
     applicationLabel,
-    notes
+    notes,
+    leadContact,
+    office
   } = content;
 
   return (
@@ -62,6 +68,87 @@ export function StatePage({ content }: { content: StateContent }) {
           ))}
         </div>
       </section>
+
+      {/* Lead Contact */}
+      {leadContact && (
+        <section className="bg-cream">
+          <div className="container-edge grid gap-10 py-20 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-4">
+              <div className="flex aspect-square w-full items-end bg-forest-deep p-8 text-cream">
+                <div>
+                  <div className="font-serif text-7xl text-gold-warm">{leadContact.initials}</div>
+                  {leadContact.tenure && (
+                    <div className="mt-4 text-xs uppercase tracking-widest text-cream/70">
+                      {leadContact.tenure}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-8 lg:pl-8">
+              <span className="eyebrow">Your CAFI {abbr} contact</span>
+              <h2 className="mt-5 font-serif text-3xl font-bold leading-tight text-forest-deep md:text-5xl">
+                Ask for {leadContact.name.split(" ")[0]}.
+              </h2>
+              <p className="mt-3 text-sm uppercase tracking-widest text-gold">{leadContact.role}</p>
+              <p className="mt-6 max-w-prose text-lg leading-relaxed text-ink/80">{leadContact.bio}</p>
+
+              <dl className="mt-8 grid gap-6 sm:grid-cols-3">
+                <div>
+                  <dt className="text-xs uppercase tracking-widest text-forest/60">Phone</dt>
+                  <dd className="mt-1">
+                    {leadContact.phone ? (
+                      <a
+                        href={`tel:+1${leadContact.phone.replace(/\D/g, "")}`}
+                        className="font-serif text-2xl font-semibold text-forest-deep hover:text-gold"
+                      >
+                        {leadContact.phone}
+                      </a>
+                    ) : (
+                      <a
+                        href={`tel:+1${(office?.phones[0] ?? "915.772.6333").replace(/\D/g, "")}`}
+                        className="font-serif text-2xl font-semibold text-forest-deep hover:text-gold"
+                      >
+                        {office?.phones[0] ?? "915.772.6333"}
+                      </a>
+                    )}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-xs uppercase tracking-widest text-forest/60">Email</dt>
+                  <dd className="mt-1">
+                    {leadContact.email ? (
+                      <a
+                        href={`mailto:${leadContact.email}`}
+                        className="font-serif text-lg text-forest-deep hover:text-gold"
+                      >
+                        {leadContact.email}
+                      </a>
+                    ) : (
+                      <Link
+                        href="/contact"
+                        className="font-serif text-lg text-forest-deep hover:text-gold"
+                      >
+                        Contact via form
+                      </Link>
+                    )}
+                  </dd>
+                </div>
+                {office && (
+                  <div>
+                    <dt className="text-xs uppercase tracking-widest text-forest/60">Office</dt>
+                    <dd className="mt-1 font-serif text-lg leading-snug text-forest-deep">
+                      {office.street}
+                      <br />
+                      {office.cityState}
+                    </dd>
+                  </div>
+                )}
+              </dl>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Affiliations */}
       <section className="bg-cream">
@@ -223,8 +310,9 @@ export function StatePage({ content }: { content: StateContent }) {
               Funding the next mobilization in {name}.
             </h2>
             <p className="mt-5 max-w-2xl text-lg text-cream/80">
-              Two-page application. Approval in one to two business days. Funding inside 24 to
-              48 hours. Se Habla Español.
+              {leadContact
+                ? `Talk to ${leadContact.name.split(" ")[0]} or apply today. Two-page application. Approval in one to two business days. Funding inside 24 to 48 hours. Se Habla Español.`
+                : "Two-page application. Approval in one to two business days. Funding inside 24 to 48 hours. Se Habla Español."}
             </p>
           </div>
           <div className="md:col-span-4 md:justify-self-end">
@@ -232,9 +320,18 @@ export function StatePage({ content }: { content: StateContent }) {
               <Link href="/funding#apply" className="btn-gold arrow">
                 Apply for Working Capital
               </Link>
-              <a href="tel:+19157726333" className="font-serif text-2xl font-semibold text-gold-warm">
-                915.772.6333
-              </a>
+              {(() => {
+                const phone =
+                  leadContact?.phone ?? office?.phones[0] ?? "915.772.6333";
+                return (
+                  <a
+                    href={`tel:+1${phone.replace(/\D/g, "")}`}
+                    className="font-serif text-2xl font-semibold text-gold-warm"
+                  >
+                    {phone}
+                  </a>
+                );
+              })()}
             </div>
           </div>
         </div>

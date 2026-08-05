@@ -6,7 +6,8 @@ const columns = [
     links: [
       { href: "/funding", label: "How it works" },
       { href: "/funding#apply", label: "Apply" },
-      { href: "/funding#qualify", label: "What qualifies" }
+      { href: "/funding#qualify", label: "What qualifies" },
+      { href: "/project-assurance", label: "Project Assurance (GCs)" }
     ]
   },
   {
@@ -23,6 +24,7 @@ const columns = [
       { href: "/about", label: "About" },
       { href: "/team", label: "Team" },
       { href: "/case-studies", label: "Case studies" },
+      { href: "/faq", label: "FAQ" },
       { href: "/contact", label: "Contact" }
     ]
   }
@@ -35,24 +37,31 @@ export function Footer() {
         <div className="lg:col-span-5">
           <div className="font-serif text-3xl font-bold tracking-tight text-cream">CAFI</div>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-cream/70">
-            Working capital and short-term accounts receivable financing for commercial
-            construction and service contractors performing on government, state, and local
-            contracts across Texas, Arizona, and New Mexico. 30+ years on Southwest job sites.
+            Cash management and funds control for commercial construction and service contractors.
+            Approved invoices become working capital in 24 to 48 hours. Not a loan, no debt on the
+            books. 30+ years across Texas, Arizona, and New Mexico.
           </p>
-          <div className="mt-8 space-y-2 font-sans text-sm text-cream/85">
-            <p>6044 Gateway Blvd E, Suite 544</p>
-            <p>El Paso, TX 79905</p>
-            <p>
-              <a href="tel:+19157726333" className="hover:text-gold-warm">
-                915.772.6333
-              </a>
-              <span className="mx-2 text-cream/40">·</span>
-              <a href="tel:+18886862234" className="hover:text-gold-warm">
-                888.686.2234
-              </a>
-            </p>
-            <p className="pt-2 text-gold-warm">Se Habla Español</p>
+          <div className="mt-8 grid gap-6 text-sm text-cream/85 sm:grid-cols-2">
+            <div>
+              <p className="text-[10px] uppercase tracking-widest text-gold-warm">El Paso · Headquarters</p>
+              <p className="mt-2">6044 Gateway Blvd E, Suite 544</p>
+              <p>El Paso, TX 79905</p>
+              <p className="mt-1">
+                <a href="tel:+19157726333" className="hover:text-gold-warm">915.772.6333</a>
+                <span className="mx-2 text-cream/40">·</span>
+                <a href="tel:+18886862234" className="hover:text-gold-warm">888.686.2234</a>
+              </p>
+            </div>
+            <div>
+              <p className="text-[10px] uppercase tracking-widest text-gold-warm">Scottsdale · CAFI Arizona</p>
+              <p className="mt-2">8260 E Raintree Drive</p>
+              <p>Scottsdale, AZ 85260</p>
+              <p className="mt-1">
+                <a href="tel:+14803158188" className="hover:text-gold-warm">480.315.8188</a>
+              </p>
+            </div>
           </div>
+          <p className="mt-6 text-sm text-gold-warm">Se Habla Español</p>
         </div>
 
         {columns.map((col) => (

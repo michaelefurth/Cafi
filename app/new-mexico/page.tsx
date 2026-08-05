@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { StatePage, type StateContent } from "@/components/StatePage";
+import { JsonLd } from "@/components/JsonLd";
+import { heroImages } from "@/lib/images";
+import { leadContactFor, offices } from "@/lib/contacts";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "CAFI New Mexico | Holloman, White Sands, and NM Contractors",
@@ -14,8 +18,7 @@ const content: StateContent = {
   heroTitle: <>Long-running work on New Mexico federal installations.</>,
   heroIntro:
     "CAFI has funded subcontractors on Holloman Air Force Base, White Sands Missile Range, and commercial construction work across New Mexico for decades. Part of the same 30+ year track record on Southwest federal projects.",
-  heroImage:
-    "https://images.unsplash.com/photo-1542621334-a254cf47733d?auto=format&fit=crop&w=2200&q=80",
+  heroImage: heroImages.newMexico,
   heroImageAlt: "Southwest desert construction site near White Sands",
   pillars: [
     { value: "30+", label: "Years on Southwest federal work" },
@@ -88,9 +91,25 @@ const content: StateContent = {
       application, are being expanded. To talk to CAFI about a New Mexico project today, call
       915.772.6333 or 888.686.2234.
     </p>
-  )
+  ),
+  leadContact: leadContactFor("NM"),
+  office: offices.elPaso
 };
 
 export default function Page() {
-  return <StatePage content={content} />;
+  return (
+    <>
+      <JsonLd
+        id="ld-new-mexico"
+        data={[
+          serviceSchema(),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "New Mexico", path: "/new-mexico" }
+          ])
+        ]}
+      />
+      <StatePage content={content} />
+    </>
+  );
 }
